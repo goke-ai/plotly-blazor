@@ -1,0 +1,80 @@
+@page "/fetchdata"
+@inject HttpClient Http
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="chart">
+        <LineChart Chart="chart" />
+    </div>
+}
+
+@code {
+        private WeatherForecast[] forecasts;
+        Chart chart;
+
+        protected override async Task OnInitializedAsync()
+        {
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+
+            var dataTemperatureC = (from f in forecasts
+                                    select new double[] { (f.Date.Ticks % 123), f.TemperatureC }).ToArray();
+            var dataTemperatureF = (from f in forecasts
+                                    select new double[] { (f.Date.Ticks % 123), f.TemperatureF }).ToArray();
+
+            var chartDataSets = new List<ChartDataSet>
+        {
+            new ChartDataSet{Name="TempC", Data=dataTemperatureC},
+            new ChartDataSet{Name="TempF", Data=dataTemperatureF}
+        };
+
+            chart = new Chart
+            {
+                Title = "Weather",
+            XLabel = "Date Number",
+            YLabel = "Temperatures",
+            DataSets = chartDataSets
+            };
+
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}
