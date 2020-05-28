@@ -47,9 +47,9 @@ else
             forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
 
             var dataTemperatureC = (from f in forecasts
-                                    select new double[] { (f.Date.Ticks % 123), f.TemperatureC }).ToArray();
+                                    select new double[] { Convert.ToDouble(f.Date.ToString("yyyyMMdd")), f.TemperatureC }).ToArray();
             var dataTemperatureF = (from f in forecasts
-                                    select new double[] { (f.Date.Ticks % 123), f.TemperatureF }).ToArray();
+                                    select new double[] { Convert.ToDouble(f.Date.ToString("yyyyMMdd")), f.TemperatureF }).ToArray();
 
             var chartDataSets = new List<ChartDataSet>
         {
