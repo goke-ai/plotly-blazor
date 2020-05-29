@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Plotly.Blazor
+namespace Goke.Plotly.Blazor
 {
     public class Chart
     {
