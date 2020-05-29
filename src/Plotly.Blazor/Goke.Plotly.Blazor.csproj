@@ -5,10 +5,13 @@
     <RazorLangVersion>3.0</RazorLangVersion>
     <AssemblyName>Goke.Plotly.Blazor</AssemblyName>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/goke-ai/plotly.blazor</PackageProjectUrl>
-    <Description>I needed Plotly in Blazor. So I started the project.</Description>
+    <PackageProjectUrl>https://goke.azurewebsites.net/plotly</PackageProjectUrl>
+    <Description>Wrapper for Plotly in Blazor</Description>
     <RepositoryUrl>https://github.com/goke-ai/plotly.blazor</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.5</Version>
+    <PackageReleaseNotes>I other to avoid conflict all chart component prefixed with Plotly*</PackageReleaseNotes>
+    <Authors>Goke Oladokun</Authors>
   </PropertyGroup>
 
 
