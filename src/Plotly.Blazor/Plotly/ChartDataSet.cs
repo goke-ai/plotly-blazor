@@ -7,6 +7,6 @@ namespace Goke.Plotly.Blazor
     public class ChartDataSet
     {
         public string Name { get; set; }
-        public double[][] Data { get; set; }
+        public object[][] Data { get; set; }
     }
 }

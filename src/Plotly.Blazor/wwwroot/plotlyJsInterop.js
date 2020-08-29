@@ -9,6 +9,8 @@ window.plotlyDrawChart = (element, chart) => {
     var xLabel = chart.xLabel; // ;
     var yLabel = chart.yLabel; //
 
+    console.log(xLabel);
+
     var data = [];
     var n = 1;
 
@@ -17,9 +19,6 @@ window.plotlyDrawChart = (element, chart) => {
         var y = [];
 
         for (var d of dataset.data) {
-
-            console.log('d');
-            console.log(d);
 
             // for (var i = 0; i < d.length; i++) {
             x.push(d[0]);
@@ -38,9 +37,6 @@ window.plotlyDrawChart = (element, chart) => {
         data.push(series);
         n += 1;
     }
-
-    console.log('data');
-    console.log(data);
 
     var layout = {
         title: title,
@@ -95,6 +91,8 @@ window.plotlyDrawChart = (element, chart) => {
         showlegend: true
     };
 
+    console.log(layout);
+
     var config = {
         responsive: true,
         toImageButtonOptions: {
@@ -109,4 +107,29 @@ window.plotlyDrawChart = (element, chart) => {
     Plotly.newPlot(element, data, layout, config);
 }
 
+window.plotlyBarChart = (element, chart) => {
 
+    var data = chart.traces;
+    var layout = chart.layout;
+    var config = chart.config;
+
+    Plotly.newPlot(element, data, layout, config);
+}
+
+window.plotlyPieChart = (element, chart) => {
+
+    var data = chart.traces;
+    var layout = chart.layout;
+    var config = chart.config;
+
+    Plotly.newPlot(element, data, layout, config);
+}
+
+window.plotlyChart = (element, chart) => {
+
+    var data = chart.traces;
+    var layout = chart.layout;
+    var config = chart.config;
+
+    Plotly.newPlot(element, data, layout, config);
+}

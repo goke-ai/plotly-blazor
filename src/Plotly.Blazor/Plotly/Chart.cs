@@ -10,5 +10,9 @@ namespace Goke.Plotly.Blazor
         public string XLabel { get; set; }
         public string YLabel { get; set; }
         public List<ChartDataSet> DataSets { get; set; }
+        public List<Trace> Traces { get; set; }
+        public Layout Layout { get; set; }
+        public Config Config { get; set; }
+
     }
 }
