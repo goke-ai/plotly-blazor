@@ -6,6 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\Release\**" />
+    <Content Remove="bin\Release\**" />
+    <EmbeddedResource Remove="bin\Release\**" />
+    <None Remove="bin\Release\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\app.css" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\bootstrap\bootstrap.min.css" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\fonts\open-iconic.eot" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\fonts\open-iconic.otf" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\fonts\open-iconic.ttf" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\fonts\open-iconic.woff" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\favicon.ico" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\index.html" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\sample-data\weather.json" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\_content\Goke.Plotly.Blazor\background.png" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\_content\Goke.Plotly.Blazor\styles.css" />
+    <Content Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.boot.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
@@ -14,6 +37,112 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Plotly.Blazor\Goke.Plotly.Blazor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Release\netstandard2.1\publish\web.config" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\css\bootstrap\bootstrap.min.css.map" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\FONT-LICENSE" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\ICON-LICENSE" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\css\open-iconic\README.md" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_content\Goke.Plotly.Blazor\plotly-latest.min.js" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_content\Goke.Plotly.Blazor\plotlyJsInterop.js" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.boot.json.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.boot.json.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.webassembly.js" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.webassembly.js.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\blazor.webassembly.js.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.3.2.0.js" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.3.2.0.js.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.3.2.0.js.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.timezones.dat" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.timezones.dat.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.timezones.dat.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.wasm" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.wasm.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\wasm\dotnet.wasm.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Goke.Plotly.Blazor.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Goke.Plotly.Blazor.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Goke.Plotly.Blazor.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.Web.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.Web.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.Web.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.WebAssembly.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.WebAssembly.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.AspNetCore.Components.WebAssembly.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Bcl.AsyncInterfaces.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Bcl.AsyncInterfaces.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Abstractions.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Abstractions.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Json.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Json.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Configuration.Json.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.DependencyInjection.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.Abstractions.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.Abstractions.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.Abstractions.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Logging.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Options.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Options.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Options.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Primitives.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Primitives.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.Extensions.Primitives.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.WebAssembly.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.WebAssembly.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Microsoft.JSInterop.WebAssembly.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\mscorlib.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\mscorlib.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\mscorlib.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Plotly.Blazor.Sample.Client.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Plotly.Blazor.Sample.Client.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\Plotly.Blazor.Sample.Client.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Core.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Core.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Core.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.Json.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.Json.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.Json.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.WebAssemblyHttpHandler.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.WebAssemblyHttpHandler.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Net.Http.WebAssemblyHttpHandler.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Runtime.CompilerServices.Unsafe.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Runtime.CompilerServices.Unsafe.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Runtime.CompilerServices.Unsafe.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Encodings.Web.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Encodings.Web.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Encodings.Web.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Json.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Json.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\System.Text.Json.dll.gz" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\WebAssembly.Bindings.dll" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\WebAssembly.Bindings.dll.br" />
+    <None Include="bin\Release\netstandard2.1\publish\wwwroot\_framework\_bin\WebAssembly.Bindings.dll.gz" />
   </ItemGroup>
 
 </Project>
