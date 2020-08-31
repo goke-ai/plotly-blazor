@@ -133,3 +133,12 @@ window.plotlyChart = (element, chart) => {
 
     Plotly.newPlot(element, data, layout, config);
 }
+
+window.plotlyChart2 = (element, chart) => {
+
+    var data = chart.traces;
+    var layout = chart.layout;
+    var config = chart.config;
+
+    Plotly.newPlot(element, data, layout, config);
+}
