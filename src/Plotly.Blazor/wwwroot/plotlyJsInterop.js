@@ -91,7 +91,7 @@ window.plotlyDrawChart = (element, chart) => {
         showlegend: true
     };
 
-    console.log(layout);
+    // console.log(layout);
 
     var config = {
         responsive: true,
