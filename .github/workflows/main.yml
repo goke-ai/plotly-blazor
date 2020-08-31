@@ -1,6 +1,6 @@
 name: DeployToGitHubPages
 env:
-  PUBLISH_DIR: src/Plotly.Blazor/publish/wwwroot
+  PUBLISH_DIR: sample/Plotly.Blazor.Sample.Client/bin/Release/netstandard2.1/publish/wwwroot
 
 on:
   push:
