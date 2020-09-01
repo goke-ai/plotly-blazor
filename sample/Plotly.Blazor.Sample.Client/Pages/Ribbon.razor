@@ -9,9 +9,9 @@
     <div>
         <h5>Basic Ribbon Plot</h5>
         <div style="width: 700px; height: 550px">
-            @if (chartbasicRibbonPlot != null)
+            @if (chartBasicRibbonPlot != null)
             {
-            <PlotlyChart Chart=@chartbasicRibbonPlot />
+            <PlotlyChart Chart=@chartBasicRibbonPlot />
             }
         </div>
     </div>
@@ -24,7 +24,7 @@
 @code{
 
 
-    public Goke.Plotly.Blazor.Chart chartbasicRibbonPlot;
+    public Goke.Plotly.Blazor.Chart chartBasicRibbonPlot;
 
     string url = "https://raw.githubusercontent.com/plotly/datasets/master/3d-ribbon.json";
 
@@ -130,7 +130,7 @@
         };
 
 
-        chartbasicRibbonPlot = new Goke.Plotly.Blazor.Chart
+        chartBasicRibbonPlot = new Goke.Plotly.Blazor.Chart
         {
             Traces = basicRibbonPlot,
             Layout = new Goke.Plotly.Blazor.Layout

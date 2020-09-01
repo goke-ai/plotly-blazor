@@ -16,7 +16,9 @@
 
         public object Range { get; set; }
         public bool? Autorange { get; set; }
-        public bool Automargin { get; set; }
+        public bool? Automargin { get; set; }
+
+        public object Domain { get; set; } = new object();
 
     }
 }

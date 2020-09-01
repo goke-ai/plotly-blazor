@@ -42,6 +42,8 @@ namespace Goke.Plotly.Blazor
         public const string Scatter = "scatter";
         public const string Pie = "pie";
         public const string Surface = "surface";
+        public const string Histogram = "histogram";
+        public const string Histogram2dcontour = "histogram2dcontour";
     }
     public struct Mode
     {
@@ -98,7 +100,9 @@ namespace Goke.Plotly.Blazor
         public Font Textfont { get; set; } = new Font();
         public string Textinfo { get; set; }
         public object Colorscale { get; set; }
-        public bool Showscale { get; set; }
+        public bool? Showscale { get; set; }
+        public bool? Reversescale { get; set; }
+        public int? Ncontours { get; set; }
 
         public static string[] Colors = new string[] { "rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,0,255)", "rgb(255,255,0)", "rgb(0,255,255)" };
 

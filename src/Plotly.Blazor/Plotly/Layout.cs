@@ -20,6 +20,9 @@
         public Axis Xaxis { get; set; } = new Axis();
         public Axis Yaxis { get; set; } = new Axis();
         public Axis Zaxis { get; set; } = new Axis();
+        public Axis Xaxis2 { get; set; } = new Axis();
+        public Axis Yaxis2 { get; set; } = new Axis();
+        public Axis Zaxis2 { get; set; } = new Axis();
 
         public Font Font { get; set; }
 

@@ -1,0 +1,158 @@
+﻿@page "/2d-density"
+
+@inject HttpClient http;
+
+<h3>2d Density Plot</h3>
+
+<div class="container">
+
+    <div>
+        <h5>2D Histogram Contour Plot with Histogram Subplots</h5>
+        <div style="width: 700px; height: 550px">
+            @if (chart2DHistogram != null)
+            {
+                <PlotlyChart Chart=@chart2DHistogram />
+            }
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</div>
+
+@code{
+
+
+    public Goke.Plotly.Blazor.Chart chart2DHistogram;
+
+
+    protected override void OnInitialized()
+    {
+
+        const int N = 2000;
+        var a = -1;
+        var b = 1.2;
+
+        var step = (b - a) / (N - 1);
+        var t = new double[N];
+        var x = new double[N];
+        var y = new double[N];
+
+        for (var i = 0; i < N; i++)
+        {
+            t[i] = a + step * i;
+            x[i] = (Math.Pow(t[i], 3)) + (0.3 * Normal());
+            y[i] = (Math.Pow(t[i], 6)) + (0.3 * Normal());
+        }
+
+        List<Trace> _2DHistogram = new List<Trace>
+    {
+            new Trace
+            {
+                X= x,
+                Y= y,
+                Mode= Goke.Plotly.Blazor.Mode.Markers,
+                Name= "points",
+                Marker = new Marker
+                        {
+                            Color= "rgb(102,0,0)",
+                            Size= 2,
+                            Opacity= 0.4f,
+                        },
+                Type= Goke.Plotly.Blazor.Type.Scatter
+            },
+            new Trace
+            {
+                X= x,
+                Y= y,
+                Name= "density",
+                Ncontours= 20,
+                Colorscale= "Hot",
+                Reversescale= true,
+                Showscale= false,
+                Type = Goke.Plotly.Blazor.Type.Histogram2dcontour
+            },
+            new Trace
+            {
+                X= x,
+                Name= "x density",
+                Marker = new Marker
+                {
+                    Color= "rgb(102,0,0)",
+                },
+                Yaxis= "y2",
+                Type= Goke.Plotly.Blazor.Type.Histogram
+            },
+            new Trace
+            {
+                Y= y,
+                Name= "y density",
+                Marker = new Marker
+                {
+                    Color= "rgb(102,0,0)",
+                },
+                Xaxis= "x2",
+                Type= Goke.Plotly.Blazor.Type.Histogram
+            },
+        };
+
+
+        chart2DHistogram = new Goke.Plotly.Blazor.Chart
+        {
+            Traces = _2DHistogram,
+            Layout = new Goke.Plotly.Blazor.Layout
+            {
+                Showlegend = false,
+                Autosize = false,
+                Width = 600,
+                Height = 550,
+                Margin= new Margin { T=50f},
+                Hovermode=Goke.Plotly.Blazor.HoverMode.Closest,
+                Bargap= 0,
+                Xaxis = new Axis
+                {
+                    Domain = new object[] { 0, 0.85 },
+                    Showgrid = false,
+                    Zeroline = false
+                },
+                Yaxis = new Axis
+                {
+                    Domain = new object[] { 0, 0.85 },
+                    Showgrid = false,
+                    Zeroline = false
+                },
+                Xaxis2 = new Axis
+                {
+                    Domain = new object[] { 0.85, 1 },
+                    Showgrid = false,
+                    Zeroline = false
+                },
+                Yaxis2 = new Axis
+                {
+                    Domain = new object[] { 0.85, 1 },
+                    Showgrid = false,
+                    Zeroline = false
+                },
+            },
+            Config = new Goke.Plotly.Blazor.Config { Responsive = true },
+        };
+    }
+
+    public double Normal()
+    {
+        Random rnd = new Random();
+
+        var x = 0.0;
+        var y = 0.0;
+        double rds, c;
+        do
+        {
+            x = rnd.NextDouble() * 2 - 1;
+            y = rnd.NextDouble() * 2 - 1;
+            rds = x * x + y * y;
+        } while (rds == 0 || rds > 1);
+        c = Math.Sqrt(-2 * Math.Log(rds) / rds); // Box-Muller transform
+        return x * c; // throw away extra sample y * c
+    }
+}
