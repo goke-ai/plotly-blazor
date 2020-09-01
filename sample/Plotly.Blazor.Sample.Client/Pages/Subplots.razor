@@ -1,5 +1,7 @@
 ﻿@page "/subplots"
 
+@inject HttpClient http;
+
 <h3>Subplots</h3>
 
 <div class="container">
@@ -11,25 +13,28 @@
             <PlotlyChart Chart=@chartMultipleSubplots />
         </div>
     </div>
+    
 
 </div>
 
 @code{
 
+
+
     public Goke.Plotly.Blazor.Chart chartMultipleSubplots = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.MultipleSubplots,
+        Layout = new Layout
         {
-            Traces = Goke.Plotly.Blazor.SampleData.MultipleSubplots,
-            Layout = new Layout
+            Grid = new Grid
             {
-                Grid= new Grid
-                {
-                    Rows = 2,
-                    Columns = 2,
-                    Pattern = Pattern.Independent,
-                }
-            },
-            Config = new Config { Responsive = true },
-        };
+                Rows = 2,
+                Columns = 2,
+                Pattern = Pattern.Independent,
+            }
+        },
+        Config = new Config { Responsive = true },
+    };
 
 
 }

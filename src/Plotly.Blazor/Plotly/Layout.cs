@@ -17,8 +17,9 @@
     {
         public string Title { get; set; }
 
-        public XYAxis Xaxis { get; set; } = new XYAxis();
-        public XYAxis Yaxis { get; set; } = new XYAxis();
+        public Axis Xaxis { get; set; } = new Axis();
+        public Axis Yaxis { get; set; } = new Axis();
+        public Axis Zaxis { get; set; } = new Axis();
 
         public Font Font { get; set; }
 
@@ -38,6 +39,8 @@
         public Margin Margin { get; set; }
 
         public string Hovermode { get; set; }
+        public Scene Scene { get; set; } = new Scene();
+        public bool? Autosize { get; set; }
 
     }
 

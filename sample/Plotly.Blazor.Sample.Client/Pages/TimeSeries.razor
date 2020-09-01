@@ -1,0 +1,127 @@
+﻿@page "/time-series"
+
+@inject HttpClient http;
+
+<h3>Time Series</h3>
+
+<div class="container">
+        
+    <div>
+        <h5>Basic Time Series</h5>
+        <div style="width: 700px; height: 550px">
+            @if (chartBasicTimeSeries != null)
+            {
+            <PlotlyChart Chart=@chartBasicTimeSeries />
+            }
+        </div>
+    </div>
+
+</div>
+
+@code{
+
+    public Goke.Plotly.Blazor.Chart chartBasicTimeSeries;
+
+    string url = "https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv";
+
+    IEnumerable<Record> records;
+    protected override async Task OnInitializedAsync()
+    {
+        var resp = await http.GetAsync(url);
+
+        using (var reader = new System.IO.StreamReader(await resp.Content.ReadAsStreamAsync()))
+        using (var csv = new CsvHelper.CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
+        {
+            csv.Configuration.RegisterClassMap<RecordMap>();
+            records = csv.GetRecords<Record>().ToList();
+        }
+
+        // 
+        List<Trace> BasicTimeSeries = new List<Trace>
+        {
+            new Trace
+            {
+                Type= Goke.Plotly.Blazor.Type.Scatter,
+                Mode= Goke.Plotly.Blazor.Mode.Lines,
+                Name="AAPL High",
+                X= records.Select(s => s.Date.ToString("MMM d, yyyy")).ToArray(),
+                Y= records.Select(s => s.AAPLHigh.ToString()).ToArray(),
+                Line= new Goke.Plotly.Blazor.Line{ Color="#17BECF"},
+            },
+            new Trace
+            {
+                Type= Goke.Plotly.Blazor.Type.Scatter,
+                Mode= Goke.Plotly.Blazor.Mode.Lines,
+                Name="AAPL Low",
+                X= records.Select(s => s.Date.ToString("MMM d, yyyy")).ToArray(),
+                Y= records.Select(s => s.AAPLLow.ToString()).ToArray(),
+                Line= new Goke.Plotly.Blazor.Line{Color="#7F7F7F"},
+            },
+        };
+
+        chartBasicTimeSeries = new Goke.Plotly.Blazor.Chart
+        {
+            Traces = BasicTimeSeries,
+            Layout = new Goke.Plotly.Blazor.Layout
+            {
+                Title = "Basic Time Series",
+                Xaxis = new Axis
+                {
+                    Automargin= true,
+                    // Tickangle = 30,
+                    Title = "Date"
+                },
+                Yaxis = new Axis
+                {
+                    // Tickangle = 30,
+                    Title = "Trade"
+                },
+            },
+            Config = new Goke.Plotly.Blazor.Config { Responsive = true },
+        };
+    }
+
+    public class Record
+    {
+        public DateTime Date { get; set; }
+        public double AAPLOpen { get; set; }
+        public double AAPLHigh { get; set; }
+        public double AAPLLow { get; set; }
+        public double AAPLClose { get; set; }
+        public double AAPLVolume { get; set; }
+        public double AAPLAdjusted { get; set; }
+        public double Dn { get; set; }
+        public double Mavg { get; set; }
+        public double Up { get; set; }
+        public string Direction { get; set; }
+        //AAPL.Open,
+        //    AAPL.High,
+        //    AAPL.Low,
+        //    AAPL.Close,
+        //    AAPL.Volume,
+        //    AAPL.Adjusted,
+        //    dn,
+        //    mavg,
+        //    up,
+        //    direction
+        //2015-02-17,127.489998,128.880005,126.919998,127.830002,63152400,122.905254,106.7410523,117.9276669,129.1142814,Increasing
+    }
+
+    public sealed class RecordMap : CsvHelper.Configuration.ClassMap<Record>
+    {
+        public RecordMap()
+        {
+            Map(m => m.Date).Name("Date");
+            Map(m => m.AAPLOpen).Name("AAPL.Open");
+            Map(m => m.AAPLHigh).Name("AAPL.High");
+            Map(m => m.AAPLLow).Name("AAPL.Low");
+            Map(m => m.AAPLClose).Name("AAPL.Close");
+            Map(m => m.AAPLVolume).Name("AAPL.Volume");
+            Map(m => m.AAPLAdjusted).Name("AAPL.Adjusted");
+            Map(m => m.Dn).Name("dn");
+            Map(m => m.Mavg).Name("mavg");
+            Map(m => m.Up).Name("up");
+            Map(m => m.Direction).Name("direction");
+        }
+    }
+}

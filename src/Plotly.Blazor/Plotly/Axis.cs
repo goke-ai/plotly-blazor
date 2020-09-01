@@ -1,6 +1,6 @@
 ﻿namespace Goke.Plotly.Blazor
 {
-    public class XYAxis
+    public class Axis
     {
         public string Title { get; set; }
         public TitleFont Titlefont { get; set; }
@@ -16,6 +16,7 @@
 
         public object Range { get; set; }
         public bool? Autorange { get; set; }
+        public bool Automargin { get; set; }
 
     }
 }

@@ -1,0 +1,175 @@
+﻿@page "/ribbon"
+
+@inject HttpClient http;
+
+<h3>Ribbon Plot</h3>
+
+<div class="container">
+        
+    <div>
+        <h5>Basic Ribbon Plot</h5>
+        <div style="width: 700px; height: 550px">
+            @if (chartbasicRibbonPlot != null)
+            {
+            <PlotlyChart Chart=@chartbasicRibbonPlot />
+            }
+        </div>
+    </div>
+
+    <div>
+        
+    </div>
+</div>
+
+@code{
+
+
+    public Goke.Plotly.Blazor.Chart chartbasicRibbonPlot;
+
+    string url = "https://raw.githubusercontent.com/plotly/datasets/master/3d-ribbon.json";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var resp = await http.GetAsync(url);
+        var jsonString = await resp.Content.ReadAsStringAsync();
+
+        var jObj = Newtonsoft.Json.Linq.JObject.Parse(jsonString);
+
+        IList<Newtonsoft.Json.Linq.JToken> results = jObj["data"].Children().ToList();
+
+        // serialize JSON results into .NET objects
+        IList<Record.InnerData> searchResults = new List<Record.InnerData>();
+        foreach (Newtonsoft.Json.Linq.JToken result in results)
+        {
+            // JToken.ToObject is a helper method that uses JsonSerializer internally
+            var searchResult = result.ToObject<Record.InnerData>();
+            searchResults.Add(searchResult);
+        }
+
+        List<Trace> basicRibbonPlot = new List<Trace>
+        {
+            new Trace
+            {
+                X= searchResults[0].X,
+                Y= searchResults[0].Y,
+                Z= searchResults[0].Z,
+                Name="",
+                Colorscale= searchResults[0].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[1].X,
+                Y= searchResults[1].Y,
+                Z= searchResults[1].Z,
+                Name="",
+                Colorscale= searchResults[1].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[2].X,
+                Y= searchResults[2].Y,
+                Z= searchResults[2].Z,
+                Name="",
+                Colorscale= searchResults[2].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[3].X,
+                Y= searchResults[3].Y,
+                Z= searchResults[3].Z,
+                Name="",
+                Colorscale= searchResults[3].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[4].X,
+                Y= searchResults[4].Y,
+                Z= searchResults[4].Z,
+                Name="",
+                Colorscale= searchResults[4].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[5].X,
+                Y= searchResults[5].Y,
+                Z= searchResults[5].Z,
+                Name="",
+                Colorscale= searchResults[5].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+            new Trace
+            {
+                X= searchResults[6].X,
+                Y= searchResults[6].Y,
+                Z= searchResults[6].Z,
+                Name="",
+                Colorscale= searchResults[6].Colorscale,
+                Type=  Goke.Plotly.Blazor.Type.Surface,
+                Showscale= false,
+
+            },
+
+        };
+
+
+        chartbasicRibbonPlot = new Goke.Plotly.Blazor.Chart
+        {
+            Traces = basicRibbonPlot,
+            Layout = new Goke.Plotly.Blazor.Layout
+            {
+                Title = "Ribbon Plot",
+                Showlegend = false,
+                Autosize = true,
+                Width= 600,
+                Height= 600,
+                Scene = new Scene
+                {
+                    Xaxis = new Axis
+                    {
+                        Title = "Sample #"
+                    },
+                    Yaxis = new Axis
+                    {
+                        Title = "Wavelength"
+                    },
+                    Zaxis = new Axis
+                    {
+                        Title = "OD"
+                    },
+                },
+            },
+            Config = new Goke.Plotly.Blazor.Config { Responsive = true },
+        };
+    }
+
+    public class Record
+    {
+        public List<InnerData> Data { get; set; }
+
+        public class InnerData
+        {
+            public object[][] X { get; set; }
+            public object[][] Y { get; set; }
+            public object[][] Z { get; set; }
+            public string[][] Colorscale { get; set; }
+        }
+    }
+}

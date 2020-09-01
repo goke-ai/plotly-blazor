@@ -41,6 +41,7 @@ namespace Goke.Plotly.Blazor
         public const string Bar = "bar";
         public const string Scatter = "scatter";
         public const string Pie = "pie";
+        public const string Surface = "surface";
     }
     public struct Mode
     {
@@ -53,8 +54,9 @@ namespace Goke.Plotly.Blazor
 
     public class Trace
     {
-        public object[] X { get; set; }
-        public object[] Y { get; set; }
+        public object X { get; set; }
+        public object Y { get; set; }
+        public object Z { get; set; }
 
         public object Text { get; set; }
         public float[] Width { get; set; }
@@ -78,8 +80,8 @@ namespace Goke.Plotly.Blazor
         public Line Line { get; set; } = new Line();
 
         // pie
-        public object[] Values { get; set; }
-        public object[] Labels { get; set; }
+        public object Values { get; set; }
+        public object Labels { get; set; }
         public Domain Domain { get; set; }
         public float? Hole { get; set; }
 
@@ -90,13 +92,15 @@ namespace Goke.Plotly.Blazor
         //axis
         public string Xaxis { get; set; }
         public string Yaxis { get; set; }
-
-        public static string[] Colors = new string[] { "rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,0,255)", "rgb(255,255,0)", "rgb(0,255,255)" };
+        public string Zaxis { get; set; }
 
         //
         public Font Textfont { get; set; } = new Font();
         public string Textinfo { get; set; }
+        public object Colorscale { get; set; }
+        public bool Showscale { get; set; }
 
+        public static string[] Colors = new string[] { "rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,0,255)", "rgb(255,255,0)", "rgb(0,255,255)" };
 
         public static List<Trace> BarSample => new List<Trace>
         {
