@@ -1,0 +1,35 @@
+﻿@page "/subplots"
+
+<h3>Subplots</h3>
+
+<div class="container">
+        
+    <div>
+        <h5>Multiple Subplots</h5>
+        <div style="width: 700px; height: 450px">
+
+            <PlotlyChart Chart=@chartMultipleSubplots />
+        </div>
+    </div>
+
+</div>
+
+@code{
+
+    public Goke.Plotly.Blazor.Chart chartMultipleSubplots = new Chart
+        {
+            Traces = Goke.Plotly.Blazor.SampleData.MultipleSubplots,
+            Layout = new Layout
+            {
+                Grid= new Grid
+                {
+                    Rows = 2,
+                    Columns = 2,
+                    Pattern = Pattern.Independent,
+                }
+            },
+            Config = new Config { Responsive = true },
+        };
+
+
+}

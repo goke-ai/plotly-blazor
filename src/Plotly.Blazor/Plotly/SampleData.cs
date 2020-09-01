@@ -328,5 +328,42 @@ namespace Goke.Plotly.Blazor
             },
 
         };
+
+
+        // subplots
+        public static List<Trace> MultipleSubplots => new List<Trace>
+        {
+            new Trace
+            {
+                X= new object[]{ 1, 2, 3},
+                Y= new object[]{ 4, 5, 6},
+                Type= Type.Scatter,
+            },
+            new Trace
+            {
+                X= new object[]{ 20, 30, 40},
+                Y= new object[]{ 50, 60, 70},
+                Xaxis= "x2",
+                Yaxis= "y2",
+                Type= Type.Scatter,
+            },
+            new Trace
+            {
+                X= new object[]{ 300, 400, 500 },
+                Y= new object[]{ 600, 700, 800 },
+                Xaxis= "x3",
+                Yaxis= "y3",
+                Type= Type.Scatter,
+            },
+            new Trace
+            {
+                X= new object[]{ 4000, 5000, 6000 },
+                Y= new object[]{ 7000, 8000, 9000 },
+                Xaxis= "x4",
+                Yaxis= "y4",
+                Type= Type.Scatter,
+            },
+
+        };
     }
 }
