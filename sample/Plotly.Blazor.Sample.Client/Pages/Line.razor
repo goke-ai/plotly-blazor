@@ -1,20 +1,67 @@
 ﻿@page "/line"
 
-<h3>Line and Scatter Plot</h3>
+<h3>Line Charts</h3>
 
-<div class="col-6">
-    <PlotlyChart Chart=@lineChart />
+<div class="container">
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartBasicLinePlot />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartLineScatterPlot />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartAddingNamesToLineAndScatterPlot />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartLineAndScatterStyling />
+    </div>
+
 </div>
 
 @code{
 
-    public Goke.Plotly.Blazor.Chart lineChart = new Chart
+    public Goke.Plotly.Blazor.Chart chartBasicLinePlot = new Chart
     {
-        Traces = Goke.Plotly.Blazor.Line.Sample1,
+        Traces = Goke.Plotly.Blazor.SampleData.BasicLinePlot,
+        Layout = new Layout
+        {
+            Title = "Basic Line Plot",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartLineScatterPlot = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.LineScatterPlot,
+        Layout = new Layout
+        {
+            Title = "Line and Scatter Plot",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartAddingNamesToLineAndScatterPlot = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.AddingNamesToLineAndScatterPlot,
+        Layout = new Layout
+        {
+            Title = "Adding Names to Line and Scatter Plot",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartLineAndScatterStyling = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.LineAndScatterStyling,
         Layout = new Layout
         {
             Title = "Line and Scatter Styling",
         },
         Config = new Config { Responsive = true },
     };
+
+
 }

@@ -1,0 +1,94 @@
+﻿@page "/scatter"
+
+<h3>Line and Scatter Plot</h3>
+
+<div class="container">
+
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartScatterLineScatterPlot />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartScatterDataLabelHover />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartScatterDataLabelOnPlot />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@chartScatterPlotWwithAColorDimension />
+    </div>
+</div>
+
+@code{
+
+    public Goke.Plotly.Blazor.Chart chartScatterLineScatterPlot = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.ScatterLineScatterPlot,
+        Layout = new Layout
+        {
+            Title = "Line and Scatter Styling",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartScatterDataLabelHover = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.ScatterDataLabelHover,
+        Layout = new Layout
+        {
+            Xaxis = new XYAxis
+            {
+                Range = new object[] { 0.75, 5.25 }
+            },
+            Yaxis = new XYAxis
+            {
+                Range = new object[] { 0, 8 }
+            },
+            Title = "Data Labels Hover",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartScatterDataLabelOnPlot = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.ScatterDataLabelOnPlot,
+        Layout = new Layout
+        {
+            Xaxis = new XYAxis
+            {
+                Range = new object[] { 0.75, 5.25 }
+            },
+            Yaxis = new XYAxis
+            {
+                Range = new object[] { 0, 8 }
+            },
+            Legend = new Legend
+            {
+                Y = 0.5f,
+                Yref = YRef.Paper,
+                Font = new Font
+                {
+                    Family = "Arial, sans-serif",
+                    Size = 20,
+                    Color = "grey",
+                }
+            },
+            Title = "Data Labels On the Plot",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartScatterPlotWwithAColorDimension = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.ScatterPlotWwithAColorDimension,
+        Layout = new Layout
+        {
+            Title = "Scatter Plot with a Color Dimension",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+
+}

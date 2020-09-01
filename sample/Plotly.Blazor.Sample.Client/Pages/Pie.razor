@@ -1,0 +1,57 @@
+﻿@page "/pie"
+
+<h3>Pie Charts</h3>
+
+<div class="container">
+        <div class="card">
+            <div class="card-header">
+                Basic Pie Chart
+            </div>
+            <div class="card-body">
+                <div style="width: 700px; height: 450px">
+
+                    <PlotlyChart Chart=@chartBasicPieChart />
+                </div>
+            </div>
+    </div>
+        <div class="card">
+            <div class="card-header">
+                Pie Chart Subplots
+            </div>
+            <div class="card-body">
+                <div style="width: 700px; height: 450px">
+
+                    <PlotlyChart Chart=@chartPieChartSubplots />
+                </div>
+            </div>
+    </div>
+
+</div>
+
+@code{
+
+    public Goke.Plotly.Blazor.Chart chartBasicPieChart = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.BasicPieChart,
+        Layout = new Layout
+        {
+            Height = 400,
+            Width = 500,
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartPieChartSubplots = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.PieChartSubplots,
+        Layout = new Layout
+        {
+            Height=400,
+            Width=500,
+            Grid = new Grid { Rows=2, Columns=2},
+        },
+        Config = new Config { Responsive = true },
+    };
+
+
+}

@@ -1,0 +1,53 @@
+﻿@page "/bar"
+
+<h3>Bar Charts</h3>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            Basic Bar Chart
+        </div>
+        <div class="card-body">
+            <div style="width: 700px; height: 450px">
+                <PlotlyChart Chart=@chartBasicBarChart />
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            GroupedBarChart
+        </div>
+        <div class="card-body">
+            <div style="width: 700px; height: 450px">
+                <PlotlyChart Chart=@chartGroupedBarChart />
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{
+
+    public Goke.Plotly.Blazor.Chart chartBasicBarChart = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.BasicBarChart,
+        Layout = new Layout
+        {
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart chartGroupedBarChart = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.GroupedBarChart,
+        Layout = new Layout
+        {
+            Barmode = BarMode.Group,
+        },
+        Config = new Config { Responsive = true },
+    };
+
+
+
+}

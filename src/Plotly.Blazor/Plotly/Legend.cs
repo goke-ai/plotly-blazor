@@ -18,10 +18,19 @@
         public const string Horizontal = "h";
     }
 
+    public struct YRef
+    {
+        public const string Default = "";
+        public const string Paper = "paper";
+    }
+
     public class Legend
     {
         public float? X { get; set; }
         public float? Y { get; set; }
+
+        public string Yref { get; set; }
+
         public string Bgcolor { get; set; }
         public string bordercolor { get; set; }
         public float? borderwidth { get; set; }

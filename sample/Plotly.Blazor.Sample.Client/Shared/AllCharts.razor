@@ -2,36 +2,30 @@
 <div class="container">
     <div class="row">
         @* <div class="col-6">
-            <PlotlyLineChart Chart="chart" />
-        </div> *@
+                <PlotlyLineChart Chart="chart" />
+            </div> *@
         <div class="col-6">
-            <PlotlyBarChart Chart="barChart" />
+            <PlotlyChart Chart="barChart" />
         </div>
         <div class="col-6">
-            <PlotlyBarChart Chart="barGradeChart" />
+            <PlotlyChart Chart="barGradeChart" />
         </div>
         <div class="col-6">
-            <PlotlyBarChart Chart="barGroupChart" />
+            <PlotlyChart Chart="barGroupChart" />
         </div>
         <div class="col-6">
-            <PlotlyBarChart Chart="lineChart" />
+            <PlotlyChart Chart="lineChart" />
         </div>
         <div class="col-6">
-            <PlotlyPieChart Chart="pieChart" />
+            <PlotlyChart Chart="pieChart" />
         </div>
         <div class="col-6">
-            <PlotlyPieChart Chart="donutChart" />
+            <PlotlyChart Chart="donutChart" />
         </div>
     </div>
 </div>
 
 @code {
-    ElementReference BarChart;
-
-
-    public Goke.Plotly.Blazor.Chart chart;
-    public List<double[][]> sampleData { get; set; }
-    public List<Goke.Plotly.Blazor.ChartDataSet> datasets { get; set; }
 
     public Goke.Plotly.Blazor.Chart barChart = new Chart
     {
@@ -119,42 +113,48 @@
                     X=0.82F,
                     Y=0.5F,
                 },
-            },
+                },
             Showlegend = false,
             Grid = new Grid { Rows = 1, Columns = 2 },
         },
         Config = new Config { Responsive = true },
     };
 
-    protected override void OnInitialized()
-    {
-        sampleData = new List<double[][]>();
+    //ElementReference BarChart;
 
-        sampleData.Add(new double[][] {
-            new double[]{ 0.0, 0.1, 0.2, 0.3},
-            new double[]{ 1.0, 1.1, 1.2, 1.3},
-            new double[]{ 2.0, 2.1, 2.2, 2.3},
-            new double[]{ 3.0, 3.1, 3.2, 3.3},
-        });
+    //public Goke.Plotly.Blazor.Chart chart;
+    //public List<double[][]> sampleData { get; set; }
+    //public List<Goke.Plotly.Blazor.ChartDataSet> datasets { get; set; }
 
-        datasets = (from record in sampleData
-                    select new Goke.Plotly.Blazor.ChartDataSet
-                    {
-                        Name = "Test",
-                        Data = (from r in record
-                                let y = new object[] { r[0], r[2] }
-                                select y.ToArray())
-                         .ToArray()
-                    }).ToList();
+    //protected override void OnInitialized()
+    //{
+    //    sampleData = new List<double[][]>();
 
-        chart = new Goke.Plotly.Blazor.Chart
-        {
-            DataSets = datasets,
-            Title = "Line Chart",
-            XLabel = "X-Axis",
-            YLabel = "Y-Axis",
-        };
-    }
+    //    sampleData.Add(new double[][] {
+    //        new double[]{ 0.0, 0.1, 0.2, 0.3},
+    //        new double[]{ 1.0, 1.1, 1.2, 1.3},
+    //        new double[]{ 2.0, 2.1, 2.2, 2.3},
+    //        new double[]{ 3.0, 3.1, 3.2, 3.3},
+    //    });
+
+    //    datasets = (from record in sampleData
+    //                select new Goke.Plotly.Blazor.ChartDataSet
+    //                {
+    //                    Name = "Test",
+    //                    Data = (from r in record
+    //                            let y = new object[] { r[0], r[2] }
+    //                            select y.ToArray())
+    //                     .ToArray()
+    //                }).ToList();
+
+    //    chart = new Goke.Plotly.Blazor.Chart
+    //    {
+    //        DataSets = datasets,
+    //        Title = "Line Chart",
+    //        XLabel = "X-Axis",
+    //        YLabel = "Y-Axis",
+    //    };
+    //}
 
 
 }

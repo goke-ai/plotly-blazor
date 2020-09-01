@@ -46,6 +46,7 @@ namespace Goke.Plotly.Blazor
     {
         public const string Default = "";
         public const string Markers = "markers";
+        public const string MarkersText = "markers+text";
         public const string Lines = "lines";
         public const string LinesMarkers = "lines+markers";
     }
@@ -91,7 +92,12 @@ namespace Goke.Plotly.Blazor
         public string Yaxis { get; set; }
 
         public static string[] Colors = new string[] { "rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,0,255)", "rgb(255,255,0)", "rgb(0,255,255)" };
-        
+
+        //
+        public Font Textfont { get; set; } = new Font();
+        public string Textinfo { get; set; }
+
+
         public static List<Trace> BarSample => new List<Trace>
         {
             new Trace
@@ -286,5 +292,6 @@ namespace Goke.Plotly.Blazor
                     Type= Goke.Plotly.Blazor.Type.Pie,
                 },
             };
+
     }
 }
