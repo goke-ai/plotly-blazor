@@ -2,9 +2,9 @@
 {
     public class Margin
     {
-        public float? T { get; set; }
-        public float? B { get; set; }
-        public float? L { get; set; }
-        public float? R { get; set; }
+        public double? T { get; set; }
+        public double? B { get; set; }
+        public double? L { get; set; }
+        public double? R { get; set; }
     }
 }

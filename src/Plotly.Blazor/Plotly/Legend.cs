@@ -26,14 +26,14 @@
 
     public class Legend
     {
-        public float? X { get; set; }
-        public float? Y { get; set; }
+        public double? X { get; set; }
+        public double? Y { get; set; }
 
         public string Yref { get; set; }
 
         public string Bgcolor { get; set; }
         public string bordercolor { get; set; }
-        public float? borderwidth { get; set; }
+        public double? borderwidth { get; set; }
 
         public Font Font { get; set; }
         public string Xanchor { get; set; }

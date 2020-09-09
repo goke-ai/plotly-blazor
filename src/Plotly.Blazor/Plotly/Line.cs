@@ -23,7 +23,7 @@ namespace Goke.Plotly.Blazor
     public class Line
     {
         public string Color { get; set; }
-        public float? Width { get; set; }
+        public double? Width { get; set; }
         public string Shape { get; set; } = Goke.Plotly.Blazor.Shape.Default;
         public string Dash { get; set; } = Goke.Plotly.Blazor.Dash.Default;
 

@@ -9,15 +9,11 @@
     <Description>Wrapper for Plotly in Blazor</Description>
     <RepositoryUrl>https://github.com/goke-ai/plotly-blazor</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.7.2</Version>
-    <PackageReleaseNotes>I other to avoid conflict all chart component prefixed with Plotly*</PackageReleaseNotes>
+    <Version>1.8</Version>
+    <PackageReleaseNotes>I other to avoid conflict all chart component prefixed with Plotly*
+v1.8 Click event added</PackageReleaseNotes>
     <Authors>Goke Oladokun</Authors>
   </PropertyGroup>
-
-
-  <ItemGroup>
-    <Folder Include="JsInterops\" />
-  </ItemGroup>
 
 
   <ItemGroup>

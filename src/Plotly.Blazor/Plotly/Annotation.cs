@@ -5,7 +5,7 @@
         public Font Font { get; set; }
         public bool? Showarrow { get; set; }
         public string Text { get; set; }
-        public float? X { get; set; }
-        public float? Y { get; set; }
+        public object X { get; set; }
+        public object Y { get; set; }
     }
 }

@@ -85,7 +85,7 @@ namespace Goke.Plotly.Blazor
         public object Values { get; set; }
         public object Labels { get; set; }
         public Domain Domain { get; set; }
-        public float? Hole { get; set; }
+        public double? Hole { get; set; }
 
         // legend
         public string Legendgroup { get; set; }

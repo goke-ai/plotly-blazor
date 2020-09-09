@@ -9,13 +9,33 @@
     [Parameter]
     public Chart Chart { get; set; }
 
+    [Parameter]
+    public EventCallback<EventData> OnClick { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
 
         if (Chart != null)
         {
-            await JSRuntime.InvokeVoidAsync("plotlyChart", chartElt, Chart);
+            await JSRuntime.InvokeVoidAsync("plotlyChart", chartElt, Chart, DotNetObjectReference.Create(this));
         }
+    }
+
+    [JSInvokable]
+    public Task<ReturnData> Clicked(EventData data)
+    {
+
+        var task = OnClick.InvokeAsync(data);
+
+        return Task.FromResult(new ReturnData { Mode = Mode, Data = Data });
+    }
+
+    public string Mode { get; set; }
+    public Dictionary<string, object> Data { get; set; }
+    public void Relayout(Dictionary<string, object> layout)
+    {
+        Mode = "l";
+        Data = layout;
     }
 
 }

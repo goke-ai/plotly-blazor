@@ -15,7 +15,7 @@
 
     public class Layout
     {
-        public string Title { get; set; }
+        public object Title { get; set; }
 
         public Axis Xaxis { get; set; } = new Axis();
         public Axis Yaxis { get; set; } = new Axis();
@@ -24,8 +24,8 @@
         public Font Font { get; set; }
 
         public string Barmode { get; set; } = BarMode.Default;
-        public float? Bargap { get; set; } = 0.1F;
-        public float? Bargroupgap { get; set; }
+        public double? Bargap { get; set; } = 0.1F;
+        public double? Bargroupgap { get; set; }
 
         public int? Width { get; set; }
         public int? Height { get; set; }

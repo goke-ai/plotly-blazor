@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Goke.Plotly.Blazor
 {
     public static class SampleData
     {
-        
+
 
         public static List<Trace> BarSample => new List<Trace>
         {
@@ -402,7 +404,6 @@ namespace Goke.Plotly.Blazor
             }
         };
 
-
         //bar
         public static List<Trace> BasicBarChart => new List<Trace>
         {
@@ -564,5 +565,93 @@ namespace Goke.Plotly.Blazor
             },
 
         };
+
+        // click
+        public static List<Trace> BindingToClickEvent
+        {
+            get
+            {
+                // Wait to allow the timer to advance.
+                Thread.Sleep(1);
+
+                Random rng = new Random();
+                var N = 16;
+                var x = Enumerable.Range(0, N).Select(s => s).ToArray();
+                double ub = 2.0, lb = -2.0;
+                var y = Enumerable.Range(0, N).Select(s => new Data { Value = RandomNormal(rng, ub, lb) });
+
+                return new List<Trace>
+                {
+
+                    new Trace
+                    {
+                        X= x,
+                        Y= y.Select(s => s.Value).ToArray(),
+                        Type= Type.Scatter,
+                        Mode= Mode.Markers,
+                        Marker=new Marker{Size=16},
+                    },
+
+                };
+            }
+        }
+
+        public static List<Trace> CreateAnnotationOnClickEvent
+        {
+            get
+            {
+                // Wait to allow the timer to advance.
+                Thread.Sleep(1);
+
+                Random rng = new Random();
+                var N = 100;
+                var x = Enumerable.Range(0, N).Select(s => s).ToArray();
+                double ub = 2.0, lb = -2.0;
+                var y1 = Enumerable.Range(0, N).Select(s => new Data { Value = RandomNormal(rng, ub, lb) });
+                var y2 = Enumerable.Range(0, N).Select(s => new Data { Value = RandomNormal(rng, 0, -4.0) });
+                var y3 = Enumerable.Range(0, N).Select(s => new Data { Value = RandomNormal(rng, 4, 0) });
+
+                return new List<Trace>
+                {
+
+                    new Trace
+                    {
+                        X= x,
+                        Y= y1.Select(s => s.Value).ToArray(),
+                        Type= Type.Scatter,
+                        Mode= Mode.Lines,
+                        Name= "Jeff",
+                    },
+                    new Trace
+                    {
+                        X= x,
+                        Y= y2.Select(s => s.Value).ToArray(),
+                        Type= Type.Scatter,
+                        Mode= Mode.Lines,
+                        Name= "Terren",
+                    },
+                    new Trace
+                    {
+                        X= x,
+                        Y= y3.Select(s => s.Value).ToArray(),
+                        Type= Type.Scatter,
+                        Mode= Mode.Lines,
+                        Name= "Arthur",
+                    },
+
+                };
+            }
+        }
+
+        private static double RandomNormal(Random rng, double ub, double lb)
+        {
+            return (rng.NextDouble() * (ub - lb) + lb);
+        }
     }
+
+    public class Data
+    {
+        public object Value { get; set; }
+    }
+
 }

@@ -21,7 +21,7 @@
 
         public double? Tickangle { get; set; }
 
-        public float? Gridwidth { get; set; }
+        public double? Gridwidth { get; set; }
 
         public bool? Showgrid { get; set; }
         public bool? Showline { get; set; }
@@ -34,9 +34,9 @@
         public object Domain { get; set; } = new object();
 
         public object Tickvals { get; set; }
-        public float? Dtick { get; set; }
-        public float? Tick0 { get; set; }
-        public float? Ntick { get; set; }
+        public double? Dtick { get; set; }
+        public double? Tick0 { get; set; }
+        public double? Ntick { get; set; }
         public bool? Visible { get; set; }
 
     }

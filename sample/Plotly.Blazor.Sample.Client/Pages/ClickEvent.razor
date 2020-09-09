@@ -1,0 +1,93 @@
+﻿@page "/click"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Line and Scatter Plot</h3>
+
+<div class="container">
+
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart Chart=@bindingToClickEvent OnClick="OnClickPointBindingToClickEvent" />
+    </div>
+    <hr />
+    <div style="width: 700px; height: 450px">
+        <PlotlyChart @ref="plotlyChartCreateAnnotationOnClickEvent"  Chart=@createAnnotationOnClickEvent OnClick="OnClickPointCreateAnnotationOnClickEvent" />
+    </div>
+</div>
+
+@code{
+
+    PlotlyChart plotlyChartCreateAnnotationOnClickEvent;
+
+    public Goke.Plotly.Blazor.Chart bindingToClickEvent = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.BindingToClickEvent,
+        Layout = new Layout
+        {
+            Hovermode = HoverMode.Closest,
+            Title = "Click on Points",
+        },
+        Config = new Config { Responsive = true },
+    };
+
+    public Goke.Plotly.Blazor.Chart createAnnotationOnClickEvent = new Chart
+    {
+        Traces = Goke.Plotly.Blazor.SampleData.CreateAnnotationOnClickEvent,
+        Layout = new Layout
+        {
+            Hovermode = HoverMode.Closest,
+            Title = "Click on Points to add an Annotation on it",
+
+        },
+        Config = new Config { Responsive = true },
+    };
+
+
+    protected async Task OnClickPointBindingToClickEvent(Goke.Plotly.Blazor.EventData data)
+    {
+        var pts = "";
+        for (var i = 0; i < data.Points.Length; i++)
+        {
+            pts = $"x = {data.Points[i].X} \ny = {data.Points[i].Y} \nname = {data.Points[i].Trace.Mode}\n\n";
+        }
+        await JSRuntime.InvokeVoidAsync("alert", pts);
+    }
+
+    protected void OnClickPointCreateAnnotationOnClickEvent(Goke.Plotly.Blazor.EventData data)
+    {
+        var layout = new Dictionary<string, object>();
+
+        for (var i = 0; i < data.Points.Length; i++)
+        {
+            var annotateText = $"x = {data.Points[i].X} y = {data.Points[i].Y}";
+
+
+            Annotation annotation = new Annotation {
+                Text= annotateText,
+                X= data.Points[i].X,
+                Y= data.Points[i].Y,
+                Showarrow = true,
+            };
+
+            List<Annotation> annotations;
+            if (data.Layout?.Annotations == null)
+            {
+                annotations = new List<Annotation>();
+            }
+            else
+            {
+                annotations = data.Layout.Annotations.ToList();
+            }
+
+            annotations.Add(annotation);
+
+            layout["annotations"] = annotations.ToArray();
+            layout["title"] = "Changed: " + data.Layout?.Title;
+
+        }
+
+        // call Relayout method
+        plotlyChartCreateAnnotationOnClickEvent.Relayout(layout);
+
+    }
+}
