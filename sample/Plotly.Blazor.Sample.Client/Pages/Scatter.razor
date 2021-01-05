@@ -3,22 +3,293 @@
 <h3>Line and Scatter Plot</h3>
 
 <div class="container">
+    <div class="card my-3">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart" role="tab" aria-controls="chart" aria-selected="true">Chart</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="code-tab" data-toggle="tab" href="#code" role="tab" aria-controls="code" aria-selected="false">Code</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="sampledata-tab" data-toggle="tab" href="#sampledata" role="tab" aria-controls="sampledata" aria-selected="false">Sample Data</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="chart" role="tabpanel" aria-labelledby="chart-tab">
+                    <div style="width: 700px; height: 450px">
+                        <PlotlyChart Chart=@chartScatterLineScatterPlot />
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">
+                    <pre>
+                    <code>
+                &lt;div style="width: 700px; height: 450px"&gt;
+                    &lt;PlotlyChart Chart=@@chartScatterLineScatterPlot /&gt;
+                &lt;/div&gt;
+                @@code{
+                    public Goke.Plotly.Blazor.Chart chartScatterLineScatterPlot = new Chart
+                    {
+                        Traces = Goke.Plotly.Blazor.SampleData.ScatterLineScatterPlot,
+                        Layout = new Layout
+                        {
+                            Title = "Line and Scatter Styling",
+                        },
+                        Config = new Config { Responsive = true },
+                    };
+                }
+            </code>
+            </pre>
+                </div>
+                <div class="tab-pane fade" id="sampledata" role="tabpanel" aria-labelledby="sampledata-tab">
+                    <pre>
+                    <code>
+                public static List&lt;Trace&gt; ScatterLineScatterPlot => new List&lt;Trace&gt;
+                {
+                    new Trace
+                    {
+                        X = new object[]{1, 2, 3, 4 },
+                        Y = new object[]{10, 15, 13, 17 },
+                        Mode= Goke.Plotly.Blazor.Mode.Markers,
+                        Type = Type.Scatter,
+                    },
+                    new Trace
+                    {
+                        X = new object[]{2, 3, 4, 5 },
+                        Y = new object[]{16, 5, 11, 9},
+                        Mode= Blazor.Mode.Lines,
+                        Type = Type.Scatter,
+                    },
+                    new Trace
+                    {
+                        X = new object[]{1, 2, 3, 4},
+                        Y = new object[]{12, 9, 15, 12},
+                        Mode= Blazor.Mode.LinesMarkers,
+                        Type = Type.Scatter,
+                    }
+                };
+            </code>
+            </pre>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div style="width: 700px; height: 450px">
-        <PlotlyChart Chart=@chartScatterLineScatterPlot />
+    <div class="card my-3">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart2" role="tab" aria-controls="chart" aria-selected="true">Chart</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="code-tab" data-toggle="tab" href="#code2" role="tab" aria-controls="code" aria-selected="false">Code</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="sampledata-tab" data-toggle="tab" href="#sampledata2" role="tab" aria-controls="sampledata" aria-selected="false">Sample Data</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="chart2" role="tabpanel" aria-labelledby="chart-tab">
+                    <div style="width: 700px; height: 450px">
+                        <PlotlyChart Chart=@chartScatterDataLabelHover />
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="code2" role="tabpanel" aria-labelledby="code-tab">
+                    <pre>
+                    <code>
+                &lt;div style="width: 700px; height: 450px"&gt;
+                    &lt;PlotlyChart Chart=@@chartScatterDataLabelHover /&gt;
+                &lt;/div&gt;
+                @@code{
+                    public Goke.Plotly.Blazor.Chart chartScatterLineScatterPlot = new Chart
+                    {
+                        Traces = Goke.Plotly.Blazor.SampleData.ScatterDataLabelHover,
+                        Layout = new Layout
+                        {
+                            Title = "Line and Scatter Styling",
+                        },
+                        Config = new Config { Responsive = true },
+                    };
+                }
+            </code>
+            </pre>
+                </div>
+                <div class="tab-pane fade" id="sampledata2" role="tabpanel" aria-labelledby="sampledata-tab">
+                    <pre>
+                    <code>
+                public static List&lt;Trace&gt; ScatterDataLabelHover => new List&lt;Trace&gt;
+                {
+                    new Trace
+                    {
+                        X = new object[]{ 1, 2, 3, 4, 5 },
+                        Y = new object[]{ 1, 6, 3, 6, 1 },
+                        Mode= Goke.Plotly.Blazor.Mode.Markers,
+                        Type = Type.Scatter,
+                        Name= "Team A",
+                        Text= new object[]{ "A-1", "A-2", "A-3", "A-4", "A-5" },
+                        Marker= new Marker { Size= 12 },
+                    },
+                    new Trace
+                    {
+                        X = new object[]{ 1.5, 2.5, 3.5, 4.5, 5.5 },
+                        Y = new object[]{ 4, 1, 7, 1, 4 },
+                        Mode= Goke.Plotly.Blazor.Mode.Markers,
+                        Type = Type.Scatter,
+                        Name= "Team B",
+                        Text= new object[]{ "B-a", "B-b", "B-c", "B-d", "B-e" },
+                        Marker= new Marker { Size= 12 },
+                    },
+                };
+            </code>
+            </pre>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr />
-    <div style="width: 700px; height: 450px">
-        <PlotlyChart Chart=@chartScatterDataLabelHover />
+
+    <div class="card my-3">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart3" role="tab" aria-controls="chart" aria-selected="true">Chart</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="code-tab" data-toggle="tab" href="#code3" role="tab" aria-controls="code" aria-selected="false">Code</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="sampledata-tab" data-toggle="tab" href="#sampledata3" role="tab" aria-controls="sampledata" aria-selected="false">Sample Data</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="chart3" role="tabpanel" aria-labelledby="chart-tab">
+                    <div style="width: 700px; height: 450px">
+                        <PlotlyChart Chart=@chartScatterDataLabelOnPlot />
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="code3" role="tabpanel" aria-labelledby="code-tab">
+                    <pre>
+                    <code>
+                &lt;div style="width: 700px; height: 450px"&gt;
+                    &lt;PlotlyChart Chart=@@chartScatterDataLabelOnPlot /&gt;
+                &lt;/div&gt;
+                @@code{
+                    public Goke.Plotly.Blazor.Chart chartScatterLineScatterPlot = new Chart
+                    {
+                        Traces = Goke.Plotly.Blazor.SampleData.ScatterDataLabelOnPlot,
+                        Layout = new Layout
+                        {
+                            Title = "Line and Scatter Styling",
+                        },
+                        Config = new Config { Responsive = true },
+                    };
+                }
+            </code>
+            </pre>
+                </div>
+                <div class="tab-pane fade" id="sampledata3" role="tabpanel" aria-labelledby="sampledata-tab">
+                    <pre>
+                    <code>
+                public static List&lt;Trace&gt; ScatterDataLabelOnPlot => new List&lt;Trace&gt;
+                {
+                    new Trace
+                    {
+                        X = new object[]{ 1, 2, 3, 4, 5 },
+                        Y = new object[]{ 1, 6, 3, 6, 1 },
+                        Mode= Goke.Plotly.Blazor.Mode.MarkersText,
+                        Type = Type.Scatter,
+                        Name= "Team A",
+                        Text= new object[]{ "A-1", "A-2", "A-3", "A-4", "A-5" },
+                        Textposition= TextPosition.TopCenter,
+                        Textfont= new Font {
+                            Family= "Raleway, sans-serif"
+                        },
+                        Marker= new Marker { Size= 12 },
+                    },
+                    new Trace
+                    {
+                        X = new object[]{ 1.5, 2.5, 3.5, 4.5, 5.5 },
+                        Y = new object[]{ 4, 1, 7, 1, 4 },
+                        Mode= Goke.Plotly.Blazor.Mode.MarkersText,
+                        Type = Type.Scatter,
+                        Name= "Team B",
+                        Text= new object[]{ "B-a", "B-b", "B-c", "B-d", "B-e" },
+                        Textposition= TextPosition.BottomCenter,
+                        Textfont= new Font {
+                            Family= "Times New Roman"
+                        },
+                        Marker= new Marker { Size= 12 },
+                    },
+                };
+            </code>
+            </pre>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr />
-    <div style="width: 700px; height: 450px">
-        <PlotlyChart Chart=@chartScatterDataLabelOnPlot />
+
+    <div class="card my-3">
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart4" role="tab" aria-controls="chart" aria-selected="true">Chart</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="code-tab" data-toggle="tab" href="#code4" role="tab" aria-controls="code" aria-selected="false">Code</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="sampledata-tab" data-toggle="tab" href="#sampledata4" role="tab" aria-controls="sampledata" aria-selected="false">Sample Data</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="chart4" role="tabpanel" aria-labelledby="chart-tab">
+                    <div style="width: 700px; height: 450px">
+                        <PlotlyChart Chart=@chartScatterPlotWwithAColorDimension />
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="code4" role="tabpanel" aria-labelledby="code-tab">
+                    <pre>
+                    <code>
+                &lt;div style="width: 700px; height: 450px"&gt;
+                    &lt;PlotlyChart Chart=@@chartScatterPlotWwithAColorDimension /&gt;
+                &lt;/div&gt;
+                @@code{
+                    public Goke.Plotly.Blazor.Chart chartScatterLineScatterPlot = new Chart
+                    {
+                        Traces = Goke.Plotly.Blazor.SampleData.ScatterPlotWwithAColorDimension,
+                        Layout = new Layout
+                        {
+                            Title = "Line and Scatter Styling",
+                        },
+                        Config = new Config { Responsive = true },
+                    };
+                }
+            </code>
+            </pre>
+                </div>
+                <div class="tab-pane fade" id="sampledata4" role="tabpanel" aria-labelledby="sampledata-tab">
+                    <pre>
+                    <code>
+                public static List&lt;Trace&gt; ScatterPlotWwithAColorDimension => new List&lt;Trace&gt;
+                {
+                    new Trace
+                    {
+                        Y = new object[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 },
+                        Mode= Goke.Plotly.Blazor.Mode.Markers,
+                        Marker= new Marker {
+                            Size= 40,
+                            Color= new object[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 }
+                        },
+                    },
+                };
+
+            </code>
+            </pre>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr />
-    <div style="width: 700px; height: 450px">
-        <PlotlyChart Chart=@chartScatterPlotWwithAColorDimension />
-    </div>
+
 </div>
 
 @code{

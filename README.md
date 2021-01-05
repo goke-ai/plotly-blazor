@@ -1,4 +1,7 @@
-# plotly.blazor
-I need plotly in blazor
+# Goke.Plotly.Blazor
 
-Demo:  https://goke-ai.github.io/plotly-blazor/
+I needed plotly in Blazor.
+
+![sample image](https://raw.githubusercontent.com/goke-ai/images/sample.png)
+
+Demo:  <https://goke-ai.github.io/plotly-blazor/>
