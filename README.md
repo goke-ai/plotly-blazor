@@ -21,6 +21,11 @@ Add the nuget package
 - Packet CLI: `paket add Goke.Plotly.Blazor`
 - Nuget Manager in Visual Studio: search for `Goke.Plotly.Blazor`.
 
+Add the following to the Index.html in Blazor WebAssembly or App.razor Blazor Server
+
+- <script src="_content/Goke.Plotly.Blazor/plotly-latest.min.js" type="text/javascript" language="javascript"></script>
+- <script src="_content/Goke.Plotly.Blazor/plotly-js-interop.js" type="text/javascript" language="javascript"></script>
+
 ## Demo link below
 
 <https://goke-ai.github.io/plotly-blazor/>
